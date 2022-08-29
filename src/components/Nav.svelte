@@ -2,6 +2,7 @@
     import { link } from "svelte-spa-router";
     import { authenticated } from "../store/auth";
     import axios from "axios";
+	import logo from "../assets/logo.png";
 
 	let auth: Boolean = false;
 	authenticated.subscribe(value => auth = value);
@@ -18,7 +19,7 @@
 		<div class="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
 			<ul class="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
 				<li>
-					<a href="/" use:link class="nav-link px-2 text-white">Raiseguard</a>
+					<a href="https://www.defensy.io/" class="nav-link px-2 text-white"><img src={logo} alt=""></a>
 				</li>
 			</ul>
 
@@ -35,3 +36,9 @@
       </div>
     </div>
 </header>
+<style>
+	img {
+		width: 200px;
+		height: 100px;
+	}
+</style>

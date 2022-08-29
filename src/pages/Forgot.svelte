@@ -27,7 +27,7 @@
     {/if}
 
 	<form on:submit|preventDefault="{submit}">
-		<h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+		<h1 class="h3 mb-3 fw-normal">Enter Your Recovery Mail </h1>
 
 		<div class="form-floating">
 			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com">
@@ -37,3 +37,18 @@
 		<button class="w-100 btn btn-lg btn-primary mt-3" type="submit">Sign in</button>
 	</form>
 </main>
+<style>
+    .form-floating .form-control{
+		margin-bottom: 20px;
+		width: 400px;
+		border: 0;
+		border-bottom: 1px solid #212529;
+		border-radius: 0;
+	}
+	.btn {
+		margin-top: 10px;
+		background-color: transparent;
+		color:black;
+		border-color: #ef5f55;
+	}
+</style>
