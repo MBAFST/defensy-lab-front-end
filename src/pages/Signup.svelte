@@ -85,7 +85,7 @@ import { prevent_default } from "svelte/internal";
 			<input bind:value="{password}" type="password" class="form-control" placeholder="Password" >
 			<label>Password</label>
 			{#if hasBeenClicked && !isValidPassword} 
-			<p class="validation-error">Please enter a longer password</p>
+			<p class="validation-error">Please enter a <strong>Strong</strong> password</p>
 			{/if}
 			
 		</div>
