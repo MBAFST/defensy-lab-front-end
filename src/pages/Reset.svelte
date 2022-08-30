@@ -30,6 +30,7 @@
 
 		<div class="form-floating">
 			<input bind:value="{password}" type="password" class="form-control" placeholder="Password">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password</label>
 			{#if !isValidPassword} 
 			<p class="validation-error">Please enter a <strong>Strong</strong> password</p>
@@ -39,6 +40,7 @@
 
 		<div class="form-floating">
 			<input bind:value="{passwordConfirm}" type="password" class="form-control" placeholder="Password Confirm">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password Confirm</label>
 			{#if !isValidCPassword} 
 			<p class="validation-error">Passwords does not match!</p>

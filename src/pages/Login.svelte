@@ -34,10 +34,12 @@
 	
 		<div class="form-floating">
 			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Email address</label>
 		</div>
 		<div class="form-floating">
 			<input bind:value="{password}" type="password" class="form-control" placeholder="Password">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password</label>
 		</div>
 

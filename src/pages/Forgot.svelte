@@ -31,6 +31,7 @@
 
 		<div class="form-floating">
 			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com">
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Email address</label>
 		</div>
 
