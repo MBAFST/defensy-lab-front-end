@@ -112,12 +112,13 @@ import { prevent_default } from "svelte/internal";
 	.btn {
 		margin-top: 10px;
 		background-color: transparent;
-		color:#212529;
+		color:#132a6a;
 		border-color: #ef5f55;
 	}
 	h1 {
 		padding: 15px;
 		font-size: 50px;
+		color: #132a6a;
 	}
   .validation-error {
     color: rgba(255, 0, 0, 0.425);

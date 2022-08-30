@@ -27,7 +27,7 @@
     {/if}
 
 	<form on:submit|preventDefault="{submit}">
-		<h1 class="h3 mb-3 fw-normal">Enter Your Recovery Mail </h1>
+		<h1 class="h3 mb-3 fw-normal">Enter Your Email Recovery  </h1>
 
 		<div class="form-floating">
 			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com">
@@ -48,7 +48,11 @@
 	.btn {
 		margin-top: 10px;
 		background-color: transparent;
-		color:black;
+		color:#132a6a;
 		border-color: #ef5f55;
 	}
+    h1 {
+        width: 400px;
+        color: #132a6a;
+    }
 </style>

@@ -26,7 +26,7 @@
 
 <main class="form-signin w-100 m-auto">
 
-		<h1 class="h3 mb-3 fw-normal">Please reset your password</h1>
+		<h1 class="h3 mb-3 fw-normal">Reset your password</h1>
 
 		<div class="form-floating">
 			<input bind:value="{password}" type="password" class="form-control" placeholder="Password">
@@ -59,11 +59,15 @@
 	.btn {
 		margin-top: 10px;
 		background-color: transparent;
-		color:#212529;
+		color:#132a6a;
 		border-color: #ef5f55;
 	}
 	.validation-error {
     color: rgba(255, 0, 0, 0.425);
     margin-top: 5px;
+  }
+  h1 {
+	width: 400px;
+    color: #132a6a;
   }
 </style>

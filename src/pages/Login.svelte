@@ -64,10 +64,11 @@
 	h1 {
 		padding: 15px;
 		font-size: 50px;
+		color: #132a6a;
 	}
 	.btn {
 		background-color: transparent;
-		color:#212529;
+		color:#132a6a;
 		border-color: #ef5f55;
 	}
 </style>

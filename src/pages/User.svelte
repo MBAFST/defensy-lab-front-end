@@ -16,3 +16,4 @@
 <div class="container mt-5 text-center">
     {@html message}
 </div>
+<style></style>

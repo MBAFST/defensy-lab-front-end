@@ -38,7 +38,16 @@
 </header>
 <style>
 	img {
-		width: 200px;
-		height: 100px;
+		width: 250px;
+		height: 80px;
+	}
+	header {
+		background-color: white !important;
+	}
+	.btn {
+		margin-top: 10px;
+		background-color: transparent;
+		color:#132a6a;
+		border-color: #ef5f55;
 	}
 </style>
