@@ -2,19 +2,37 @@
     import { onMount } from "svelte";
     import axios from "axios";
     import { authenticated } from '../store/auth';
+    import Card from "../components/Card.svelte";
 
-    let message: String;
+    let incidents: any[] = [];
+    let container;
+    let docNo = 1;
 
     onMount(async () => {
-        const { data } = await axios.get("user");
-
-        message = `<h3>Hi ${data["first-name"]} ${data["last-name"]}</h3>`;
-        message += "<h4>I'm the admin</h4>";
+        const { data } = await axios.get("admin");
+        const documents = data["documents"];
+        for (let item of documents) {
+            incidents = [...incidents, item];
+        }
         authenticated.set(true);
     });
+
+    function increment(): number {
+        return docNo++;
+    }
 </script>
 
-<div class="container mt-5 text-center">
-    {@html message}
-</div>
+<main>
+    {#each incidents as incident}
+        {#if (docNo / 5) === Math.floor(docNo / 5)}
+            <br>
+        {/if}
+        <Card docNo={increment()} {incident}/>
+    {/each}
+</main>
 
+<style>
+    main {
+        margin-left: 4rem;
+    }
+</style>
