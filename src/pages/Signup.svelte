@@ -124,5 +124,10 @@ import { prevent_default } from "svelte/internal";
     color: rgba(255, 0, 0, 0.425);
     margin-top: 5px;
   }
+  .btn:hover{
+        background-color: #ef5f55;
+        color:white;
+        border-color: #132a6a;
+    }
 </style>
 

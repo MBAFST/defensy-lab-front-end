@@ -73,4 +73,9 @@
 		color:#132a6a;
 		border-color: #ef5f55;
 	}
+	.btn:hover{
+        background-color: #ef5f55;
+        color:white;
+        border-color: #132a6a;
+    }
 </style>

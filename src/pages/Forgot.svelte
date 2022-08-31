@@ -52,6 +52,11 @@
 		color:#132a6a;
 		border-color: #ef5f55;
 	}
+    .btn:hover{
+        background-color: #ef5f55;
+        color:white;
+        border-color: #132a6a;
+    }
     h1 {
         width: 400px;
         color: #132a6a;
