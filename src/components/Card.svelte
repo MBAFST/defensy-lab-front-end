@@ -1,6 +1,14 @@
 <script lang="ts">
+    import { link, push } from "svelte-spa-router";
+    import axios from "axios";
+
     export let incident: any;
     export let docNo: number;
+
+    $: viewRapport = async () => {
+        const user = await (await axios.get("user")).data;
+        await push(`/user/${user["id"]}/incident/${incident["id"]}`);
+    }
 </script>
 
 <div class="card">
@@ -13,7 +21,7 @@
             <p class="parent">{incident["first-name"]} {incident["last-name"]}</p>
             <p>Username : {incident["username"]} </p>
             <p>E-mail : {incident["email"]}</p>
-            <button class="btn">View Rapport</button>
+            <a href="/login" use:link class="btn" on:click={viewRapport}>View Rapport</a>
         </div>    
     </div>
 </div>
@@ -43,7 +51,7 @@
         display: flex;
         justify-content: center;
     }
-    
+
     .avatar {
         top: 4rem;
         background-color: #88c0d0;

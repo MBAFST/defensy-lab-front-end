@@ -8,6 +8,7 @@
 	import Nav from "./components/Nav.svelte";
 	import User from "./pages/User.svelte";
 	import Admin from "./pages/Admin.svelte";
+	import Incident from "./pages/Incident.svelte";
 
 	const routes = {
 		"/": Home,
@@ -16,7 +17,8 @@
 		"/forgot": Forgot,
 		"/admin": Admin,
 		"/reset/:token": Reset,
-		"/user/:id": User
+		"/user/:id": User,
+		"/user/:id/incident/:id2": Incident
 	};
 </script>
 

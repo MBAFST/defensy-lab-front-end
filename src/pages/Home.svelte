@@ -1,6 +1,5 @@
 <script lang="ts">
     import { onMount } from "svelte";
-    import axios from "axios";
     import { authenticated } from '../store/auth';
 
     let message: String;
