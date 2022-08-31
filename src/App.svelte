@@ -9,6 +9,7 @@
 	import User from "./pages/User.svelte";
 	import Admin from "./pages/Admin.svelte";
 	import Incident from "./pages/Incident.svelte";
+import Form from "./pages/Form.svelte";
 
 	const routes = {
 		"/": Home,
@@ -18,7 +19,8 @@
 		"/admin": Admin,
 		"/reset/:token": Reset,
 		"/user/:id": User,
-		"/user/:id/incident/:id2": Incident
+		"/user/:id/incident/:id2": Incident,
+		"/form": Form
 	};
 </script>
 

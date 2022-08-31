@@ -51,6 +51,7 @@ import { prevent_default } from "svelte/internal";
 	
 		<div class="form-floating ">
 			<input bind:value="{username}" class="form-control" placeholder="Username" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Username</label>
 			{#if hasBeenClicked && !isValidUName} 
 			<p class="validation-error">Please enter a Valid username</p>
@@ -59,6 +60,7 @@ import { prevent_default } from "svelte/internal";
 
 		<div class="form-floating ">
 			<input bind:value="{firstName}" class="form-control" placeholder="First Name" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>First Name</label>
 			{#if hasBeenClicked && !isValidFName} 
 			<p class="validation-error">Please enter a Valid Name</p>
@@ -67,6 +69,7 @@ import { prevent_default } from "svelte/internal";
 
 		<div class="form-floating ">
 			<input bind:value="{lastName}" class="form-control" placeholder="Last Name" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Last Name</label>
 			{#if hasBeenClicked && !isValidLName} 
 			<p class="validation-error">Please enter a Valid Name</p>
@@ -75,6 +78,7 @@ import { prevent_default } from "svelte/internal";
 
 		<div class="form-floating ">
 			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Email address</label>
 			{#if hasBeenClicked && !isValidEmail} 
 			<p class="validation-error">Invalid email</p>
@@ -83,6 +87,7 @@ import { prevent_default } from "svelte/internal";
 
 		<div class="form-floating ">
 			<input bind:value="{password}" type="password" class="form-control" placeholder="Password" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password</label>
 			{#if hasBeenClicked && !isValidPassword} 
 			<p class="validation-error">Please enter a <strong>Strong</strong> password</p>
@@ -92,6 +97,7 @@ import { prevent_default } from "svelte/internal";
 
 		<div class="form-floating ">
 			<input bind:value="{passwordConfirm}" type="password" class="form-control" placeholder="Password Confirm" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password Confirm</label>
 			{#if hasBeenClicked && !isValidCPassword} 
 			<p class="validation-error">Passwords does not match!</p>

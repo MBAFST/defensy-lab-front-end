@@ -3,9 +3,10 @@
     import axios from "axios";
     import { authenticated } from '../store/auth';
     import Card from "../components/Card.svelte";
+import AddCard from "../components/AddCard.svelte";
     
     let incidents: any[] = [];
-    let docNo = 1;
+    let docNo = 2;
 
     onMount(async () => {
         const { data } = await axios.get("incident");
@@ -22,6 +23,7 @@
 </script>
 
 <main>
+    <AddCard/>
     {#each incidents as incident}
         {#if (docNo / 5) === Math.floor(docNo / 5)}
             <br>
