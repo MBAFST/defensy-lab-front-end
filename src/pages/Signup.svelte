@@ -10,7 +10,7 @@ import { prevent_default } from "svelte/internal";
 	let password: String = "";
 	let passwordConfirm: String = "";
 
-	async function handleSubmission() {
+	async function handleSubmission() { 
     hasBeenClicked = true; 
     if (isValidUName && isValidFName&& isValidLName && isValidEmail && isValidPassword && isValidCPassword ) {
 			await axios.post("register", {

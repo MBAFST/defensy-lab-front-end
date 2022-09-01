@@ -9,7 +9,7 @@
 	import User from "./pages/User.svelte";
 	import Admin from "./pages/Admin.svelte";
 	import Incident from "./pages/Incident.svelte";
-import Form from "./pages/Form.svelte";
+	import FormApp from "./pages/FormApp.svelte";
 
 	const routes = {
 		"/": Home,
@@ -20,7 +20,7 @@ import Form from "./pages/Form.svelte";
 		"/reset/:token": Reset,
 		"/user/:id": User,
 		"/user/:id/incident/:id2": Incident,
-		"/form": Form
+		"/form": FormApp
 	};
 </script>
 

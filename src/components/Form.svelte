@@ -1,6 +1,9 @@
 <script>
-	
+
+import { link, push } from "svelte-spa-router";
+        
 	export let active_step;
+
 	let formData = {
 		name: '',
 		surname: '',
@@ -13,10 +16,10 @@
 		account_name: '',
 		card_no: ''
 	}
+	$: handleSubmit  =  async() => {
+		await push("/user/id");
+	}; 
 	
-	const handleSubmit = () => {
-		console.log("Your form data => ",formData)
-	}
 
 </script>
 
@@ -24,11 +27,11 @@
 	{#if active_step == 'Notification'}
 	<h1 class="tit">&nbsp; Notificateur de L incident</h1>
 	<div class="tog1">
-		<input type="text" required placeholder="Votre Nom" name="nom">
+		<input type="text" required placeholder="Votre Nom" name="nom" value="{['first-name']}" >
 		<input type="text" required placeholder="Votre Prenom" name="prenom">
 	</div>
 	<div class="tog2">
-		<input type="text" required placeholder="Tier" name="tier">
+		<input type="text" required placeholder="Tier" name="tier" value="{['last-name']}">
 		<input type="text" required placeholder="Lieu" name="lieu">
 	</div>
 	<div class="tog3">
@@ -129,8 +132,8 @@
 
 	{:else if active_step == 'Rapport'}
 		<div class="message">
-			<h2>Votre rapport est pret a envoyee</h2>
-			<button class="submit">Finish </button>
+			<h2>Votre rapport est pret a envoyee</h2> 
+			<a href="/user/id" use:link ><button class="submit">Finish </button></a>
 		</div>
 	{/if}
 </form>

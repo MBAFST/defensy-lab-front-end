@@ -3,7 +3,7 @@
     import axios from "axios";
     import { authenticated } from '../store/auth';
     import Card from "../components/Card.svelte";
-import AddCard from "../components/AddCard.svelte";
+    import AddCard from "../components/AddCard.svelte";
     
     let incidents: any[] = [];
     let docNo = 2;
