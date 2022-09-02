@@ -33,12 +33,12 @@
 		<h1 class="h3 mb-3 fw-normal">Login</h1>
 	
 		<div class="form-floating">
-			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com">
+			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com" required>
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Email address</label>
 		</div>
 		<div class="form-floating">
-			<input bind:value="{password}" type="password" class="form-control" placeholder="Password">
+			<input bind:value="{password}" type="password" class="form-control" placeholder="Password" required>
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password</label>
 		</div>
@@ -78,7 +78,5 @@
         color:white;
         border-color: #132a6a;
     }
-	.form-signin{
-		overflow: hidden;
-	}
+	
 </style>

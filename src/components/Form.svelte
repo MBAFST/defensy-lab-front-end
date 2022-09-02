@@ -19,6 +19,46 @@ import { link, push } from "svelte-spa-router";
 	$: handleSubmit  =  async() => {
 		await push("/user/id");
 	}; 
+	const action = {
+		identificationmMeasures: "",
+		restraintMeasures:"",
+		evidenceCollected: "",
+		eradicationMeasures: "",
+		recoveryMeasure: "",
+		other-mitigation-measures": ""
+	}
+	const evaluation = {
+		members-reaction": "",
+		documenting-procedures": "",
+		needed-information": "",
+		actions-could-prevented-recovery": "",
+		members-must-do": "",
+		correct-actions":"",
+		additional-resources-needed": "",
+		other-recommandations": ""
+	}
+	const followUp = {
+		reviewer": 0,
+		recommanded-actions": "",
+		rapporter":"",
+		carred-out": ""
+
+	}
+	const information = {
+		date-of-notification": null,
+		tier": "",
+		date-of-detection": null,
+		type-of-software": ""
+	}
+	const resume = {
+		detection-type": "",
+		description": "",
+		members": ""
+}	const notification = {
+		notifier":0,
+		other": ""
+	}
+
 	
 
 </script>
@@ -27,7 +67,7 @@ import { link, push } from "svelte-spa-router";
 	{#if active_step == 'Notification'}
 	<h1 class="tit">&nbsp; Notificateur de L incident</h1>
 	<div class="tog1">
-		<input type="text" required placeholder="Votre Nom" name="nom" value="{['first-name']}" >
+		<input type="text" required placeholder="Votre Nom" name="nom" >
 		<input type="text" required placeholder="Votre Prenom" name="prenom">
 	</div>
 	<div class="tog2">
@@ -72,45 +112,43 @@ import { link, push } from "svelte-spa-router";
     {:else if active_step == 'Actions'}
 	<h1 class="tit">&nbsp; Actions</h1>
 	<div>
-		<textarea name="mes-1" placeholder="Mesures d'identification" required></textarea>
-		<textarea name="mes-2" placeholder="Mesures de contention" required></textarea>
+		<textarea name="mes-1" placeholder="identification-measures" bind:value="{action["identification-measures"]}" required></textarea>
+		<textarea name="mes-2" placeholder="restraint-measures" bind:value="{action["restraint-measures"]}" required></textarea>
 	</div>
 	<div>
-		<textarea name="mes-3" placeholder="Mesures de rétablissement" required></textarea>
-		<textarea name="mes-4" placeholder="Mesures d'éradication"  required></textarea>
+		<textarea name="mes-3" placeholder="evidence-collected" bind:value="{action["evidence-collected"]}" required></textarea>
+		<textarea name="mes-4" placeholder="recovery-measure" bind:value="{action["recovery-measure"]}"  required></textarea>
 	</div>
 	<div>
-		<textarea name="mes-5" placeholder="Autres mesures de mitigation" required></textarea>
-		<input name="mes-6" placeholder="Preuves recueillies" type="file" >
+		<textarea name="mes-5" placeholder="Autres mesures de mitigation" bind:value="{action["other-mitigation-measures"]}" required ></textarea>
 	</div>
 
 
     {:else if active_step == 'Evaluation'}
 	<h1 class="tit">&nbsp; Evaluation</h1>
 	<div>
-		<textarea name="ques-1" placeholder="Quelle a été la réaction des membres de l’équipe ?" required></textarea>
-		<textarea name="ques-2" placeholder="Quelle a été la réaction des membres des équipes" required></textarea>
+		<textarea name="ques-1" placeholder="Quelle a été la réaction des membres de l’équipe ? " bind:value="{evaluation["members-reaction"]}" required></textarea>
 	</div>
 	<div>
-		<textarea name="ques-3" placeholder="Les procdures documentées ont-elles été suivies?Etaient-elles adéquates?" required></textarea>
-		<textarea name="ques-4" placeholder="Quelles informations étaient nécessaures?" class="input-4"
+		<textarea name="ques-3" placeholder="Les procdures documentées ont-elles été suivies?Etaient-elles adéquates?" bind:value="{evaluation["needed-information"]}" required></textarea>
+		<textarea name="ques-4" placeholder="Quelles informations étaient nécessaures?" class="input-4" bind:value="{evaluation["needed-information"]}"
 		required></textarea>
 	</div>	
 	<div>
 		<textarea name="ques-5"
 			placeholder="Des mesures ou des actions ont-elles été repris qui auraient pu empecher la reprise"
-			required></textarea>
+			bind:value="{evaluation["actions-could-prevented-recovery"]}"  required></textarea>
 		<textarea name="ques-6"
 			placeholder="Que pourrait faire différement les membres de l'équipe la prochaine fois qu'un incident se produira"
-			required></textarea>
+			bind:value="{evaluation["other-recommandations"]}" required></textarea>
 	</div>	
 	<div>	
 			<textarea name="ques-7"
-				placeholder="Quelles actions correctives peuvent empecher des incidents similaires a l'avenir ?"
+				placeholder="Quelles actions correctives peuvent empecher des incidents similaires a l'avenir ?" bind:value="{evaluation["correct-actions"]}"
 				required></textarea>
 			<textarea name="ques-8"
 				placeholder="Quelles ressources supplémentaires sont nécessaires pour détecter, analyser et atténuer les futurs incidents ?"
-				required></textarea>
+				bind:value="{evaluation["additional-resources-needed"]}" required></textarea>
 	</div>			
 	
 
@@ -124,10 +162,10 @@ import { link, push } from "svelte-spa-router";
 		<option value="D">Autres</option>
 	</select>
 	<div class="tog3">
-		<input name="realis" type="text" required placeholder="Rapport initial réalisé par">
-		<input name="suiv" type="text" required placeholder="Suivi effectué par" >
+		<input name="realis" type="text" required placeholder="Rapport initial réalisé par" bind:value="{followUp["rapporter"]}">
+		<input name="suiv" type="text" required placeholder="Suivi effectué par" bind:value="{}" >
 	</div>
-	<textarea name="action" placeholder="Actions recommandées réalisées" id="follow-area"
+	<textarea name="action" placeholder="Actions recommandées réalisées" id="follow-area" bind:value="{followUp["recommanded-actions"]}"
 		class="input-area-5 " cols="30" rows="10"></textarea>
 
 	{:else if active_step == 'Rapport'}

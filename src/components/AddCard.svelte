@@ -61,6 +61,7 @@
         align-items: center;
         border: 0.2rem white solid;
         font-size: 5rem;
+        cursor: pointer;
     }
     
     .card .info {
