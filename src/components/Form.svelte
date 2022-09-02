@@ -25,38 +25,39 @@ import { link, push } from "svelte-spa-router";
 		evidenceCollected: "",
 		eradicationMeasures: "",
 		recoveryMeasure: "",
-		other-mitigation-measures": ""
+		otherMitigationMeasures: ""
 	}
 	const evaluation = {
-		members-reaction": "",
-		documenting-procedures": "",
-		needed-information": "",
-		actions-could-prevented-recovery": "",
-		members-must-do": "",
-		correct-actions":"",
-		additional-resources-needed": "",
-		other-recommandations": ""
+		membersReaction: "",
+		documentingProcedures: "",
+		neededInformation: "",
+		actionsCouldPreventedRecovery: "",
+		membersMustDo: "",
+		correctActions:"",
+		additionalResourcesNeeded: "",
+		otherRecommandations: ""
 	}
 	const followUp = {
-		reviewer": 0,
-		recommanded-actions": "",
-		rapporter":"",
-		carred-out": ""
+		reviewer: 0,
+		recommandedActions: "",
+		rapporter:"",
+		carredOut: ""
 
 	}
 	const information = {
-		date-of-notification": null,
-		tier": "",
-		date-of-detection": null,
-		type-of-software": ""
+		dateOffNotification: null,
+		tier: "",
+		dateOfDetection: null,
+		typeOfSoftware: ""
 	}
 	const resume = {
-		detection-type": "",
-		description": "",
-		members": ""
-}	const notification = {
-		notifier":0,
-		other": ""
+		detectionType: "",
+		description: "",
+		members: ""
+	}
+	const notification = {
+		notifier:0,
+		other: ""
 	}
 
 	
@@ -163,7 +164,7 @@ import { link, push } from "svelte-spa-router";
 	</select>
 	<div class="tog3">
 		<input name="realis" type="text" required placeholder="Rapport initial réalisé par" bind:value="{followUp["rapporter"]}">
-		<input name="suiv" type="text" required placeholder="Suivi effectué par" bind:value="{}" >
+		<input name="suiv" type="text" required placeholder="Suivi effectué par" bind:value="" >
 	</div>
 	<textarea name="action" placeholder="Actions recommandées réalisées" id="follow-area" bind:value="{followUp["recommanded-actions"]}"
 		class="input-area-5 " cols="30" rows="10"></textarea>
