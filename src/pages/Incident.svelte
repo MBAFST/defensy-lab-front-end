@@ -18,20 +18,15 @@
     });
 
     $: back = async () => {
-        await push("/user/id");
+        await push("/user/" + incidents[0]["user-id"]);
     }
     let date = new Date().toLocaleDateString();
-    let incident:Object = {
-        
-    }
 </script>
 
 <main>
-
     <h1>Hi `${date}`</h1>
 
-
-    <a href="/user/id" use:link><button class="btn">Back</button></a>
+    <button class="btn" on:click={back}>Back</button>
 </main>
 
 <style>

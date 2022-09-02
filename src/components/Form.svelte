@@ -1,6 +1,12 @@
 <script>
-
-import { link, push } from "svelte-spa-router";
+	import { createAction } from "../factory/action.factory";
+	import { createAttachments } from "../factory/attachments.factory";
+	import { createEvaluation } from "../factory/evaluation.factory";
+	import { createFollowUp } from "../factory/follow-up.factory";
+	import { createInformation } from "../factory/information.factory";
+	import { createNotification } from "../factory/notification.factory";
+	import { createResume } from "../factory/resume.factory";
+	import { link, push } from "svelte-spa-router";
         
 	export let active_step;
 
@@ -16,52 +22,62 @@ import { link, push } from "svelte-spa-router";
 		account_name: '',
 		card_no: ''
 	}
+
+	const action = createAction();
+	const attachments = createAttachments();
+	const evaluation = createEvaluation();
+	const followUp = createFollowUp();
+	const information = createInformation();
+	const notification = createNotification();
+	const resume = createResume();
+	
 	$: handleSubmit  =  async() => {
 		await push("/user/id");
 	}; 
-	const action = {
-		identificationmMeasures: "",
-		restraintMeasures:"",
-		evidenceCollected: "",
-		eradicationMeasures: "",
-		recoveryMeasure: "",
-		otherMitigationMeasures: ""
-	}
-	const evaluation = {
-		membersReaction: "",
-		documentingProcedures: "",
-		neededInformation: "",
-		actionsCouldPreventedRecovery: "",
-		membersMustDo: "",
-		correctActions:"",
-		additionalResourcesNeeded: "",
-		otherRecommandations: ""
-	}
-	const followUp = {
-		reviewer: 0,
-		recommandedActions: "",
-		rapporter:"",
-		carredOut: ""
 
+	async function handleSubmission() { 
+		await axios.post("incident", {
+			// action
+			"identification-measures": action.identificationmMeasures,
+			"restraint-measures": action.restraintMeasures,
+			"evidence-collected": action.evidenceCollected,
+			"eradication-measures": action.eradicationMeasures,
+			"recovery-measure": action.recoveryMeasure,
+			"other-mitigation-measures": action.otherMitigationMeasures,
+			// attachments
+			"image-1": attachments.image1,
+			"image-2": attachments.image2,
+			"image-3": attachments.image3,
+			"image-4": attachments.image4,
+			"image-5": attachments.image5,
+			// evaluation
+			"members-reaction": evaluation.membersReaction,
+			"documenting-procedures": evaluation.documentingProcedures,
+			"needed-information": evaluation.neededInformation,
+			"actions-could-prevented-recovery": evaluation.actionsCouldPreventedRecovery,
+			"members-must-do": evaluation.membersMustDo,
+			"correct-actions": evaluation.correctActions,
+			"additional-resources-needed": evaluation.additionalResourcesNeeded,
+			"other-recommandations": evaluation.otherRecommandations,
+			// follow-up
+			"reviewer": followUp.reviewer,
+			"recommanded-actions": followUp.recommandedActions,
+			"rapporter": followUp.rapporter,
+			"carred-out": followUp.carredOut,
+			// information
+			"date-of-notification": information.dateOffNotification,
+			"tier": information.tier,
+			"date-of-detection": information.dateOfDetection,
+			"type-of-software": information.typeOfSoftware,
+			// notification
+			"notifier": notification.notifier,
+			"other": notification.other,
+			// resume
+			"detection-type": resume.detectionType,
+			"description": resume.description,
+			"members": resume.members,
+		});
 	}
-	const information = {
-		dateOffNotification: null,
-		tier: "",
-		dateOfDetection: null,
-		typeOfSoftware: ""
-	}
-	const resume = {
-		detectionType: "",
-		description: "",
-		members: ""
-	}
-	const notification = {
-		notifier:0,
-		other: ""
-	}
-
-	
-
 </script>
 
 <form class="form-container" on:submit={handleSubmit}>

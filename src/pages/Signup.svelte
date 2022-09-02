@@ -1,7 +1,7 @@
 <script lang="ts">
 	import axios from "axios";
 	import { push } from "svelte-spa-router";
-import { prevent_default } from "svelte/internal";
+	import { prevent_default } from "svelte/internal";
 
 	let username: String = "";
 	let firstName: String = "";
