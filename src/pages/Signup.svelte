@@ -135,5 +135,8 @@ import { prevent_default } from "svelte/internal";
         color:white;
         border-color: #132a6a;
     }
+	.form-signin{
+		overflow: hidden;
+	}
 </style>
 

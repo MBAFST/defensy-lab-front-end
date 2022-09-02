@@ -78,4 +78,7 @@
         color:white;
         border-color: #132a6a;
     }
+	.form-signin{
+		overflow: hidden;
+	}
 </style>

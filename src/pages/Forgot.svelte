@@ -27,7 +27,7 @@
     {/if}
 
 	<form on:submit|preventDefault="{submit}">
-		<h1 class="h3 mb-3 fw-normal">Enter Your Email Recovery  </h1>
+		<h1 class="h3 mb-3 fw-normal">Enter Your Recovery Email</h1>
 
 		<div class="form-floating">
 			<input bind:value="{email}" type="email" class="form-control" placeholder="name@example.com">
@@ -58,7 +58,13 @@
         border-color: #132a6a;
     }
     h1 {
-        width: 400px;
+        width: 300px;
         color: #132a6a;
+    }
+    .form-signin{
+		overflow: hidden;
+	}
+    @media screen and (min-width:900px) {
+        
     }
 </style>
