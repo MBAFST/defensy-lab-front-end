@@ -1,4 +1,4 @@
-let detectionType: string = "";
+let detectionType: number = 0;
 let description: string = "";
 let members: string = "";
 

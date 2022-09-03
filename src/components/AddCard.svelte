@@ -4,6 +4,7 @@
     $: addCard = async () => {
         const user = await (await axios.get("user")).data;
         await push(`/form`);
+        await push(`/user/${user["id"]}/form`);
     };
 
 </script>
@@ -72,30 +73,5 @@
         border-top-left-radius: 45%;
         border-top-right-radius: 45%;
         height: 70%;
-    }
-    
-    .parent {
-        margin-right: 1rem;
-        margin-left: 1rem;
-        margin-top: 3.5rem;
-        margin-bottom: 1rem;
-        font-size: 2rem;
-        text-transform: uppercase;
-        color: #4c566a;
-    }
-    
-    .btn {
-        background-color: transparent;
-        color:#132a6a;
-        border-color: #ef5f55;
-    }
-
-    .btn:hover{
-        background-color: #ef5f55;
-        color:white;
-        border-color: #132a6a;
-    }
-    h1 {
-        height: fit-content;
     }
 </style>

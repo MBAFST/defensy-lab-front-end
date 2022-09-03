@@ -5,7 +5,6 @@
     import Card from "../components/Card.svelte";
 
     let incidents: any[] = [];
-    let container;
     let docNo = 1;
 
     onMount(async () => {
