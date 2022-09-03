@@ -47,8 +47,9 @@
 		{ id: 3, text: "Other:" }
 	];
 
-	async function handleSubmission() { 
-		await axios.post("incident", {
+	async function handleSubmission() {
+		const args = $location.split("/");
+		const document = await axios.post(`user/${args[2]}/incident`, {
 			// action
 			"identification-measures": action.identificationmMeasures,
 			"restraint-measures": action.restraintMeasures,
@@ -77,8 +78,8 @@
 			"rapporter": followUp.rapporter,
 			"carred-out": followUp.carredOut,
 			// information
-			"date-of-notification": Date.now(),
-			"tier": parseInt(information.tier),
+			"date-of-notification": (new Date()).toISOString().slice(0,10),
+			"tier": information.tier,
 			"date-of-detection": information.dateOfDetection,
 			"type-of-software": information.typeOfSoftware,
 			// notification
@@ -90,8 +91,8 @@
 			"members": resume.members,
 		});
 
-		const args = $location.split("/");
-		await push("/user/" + args[2]);
+		console.log(document);
+		await push(`/user/${args[2]}`);
 	}
 </script>
 
@@ -99,14 +100,14 @@
 	{#if active_step == 'Notification'}
 		<h1 class="tit">&nbsp; Notificateur de L incident</h1>
 		<div class="tog2">
-			<input type="text" required placeholder="Tier" name="tier" bind:value="{information.tier}">
+			<input type="number" required placeholder="Tier" name="tier" bind:value="{information.tier}">
 			<input type="text" required placeholder="Lieu" name="lieu" bind:value="{information.place}">
 		</div>
 		<div class="tog3">
 			<input type="text" required placeholder="GSM/Contact" name="GSM" bind:value="{information.contact}">
 			<input type="text" required placeholder="Systeme ou Application" name="sys" bind:value="{information.typeOfSoftware}">
 		</div>
-		<input type="datetime-local" required name="date" bind:value="{information.dateOfDetection}">
+		<input type="date" required name="date" bind:value="{information.dateOfDetection}">
 	{:else if active_step == 'Type'}
 		<h1 class="tit">&nbsp; Resume de l'incident</h1>
 		<select bind:value={resume.detectionType}>
@@ -238,7 +239,7 @@
 		transform: scale(0.98);
 	}
 	
-	input[type=datetime-local]{
+	input[type=date]{
 		width: 690px;
 	}
 	
