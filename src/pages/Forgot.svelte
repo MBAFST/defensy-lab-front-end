@@ -64,7 +64,4 @@
     .form-signin{
 		overflow: hidden;
 	}
-    @media screen and (min-width:900px) {
-        
-    }
 </style>

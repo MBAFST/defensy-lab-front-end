@@ -4,6 +4,7 @@
     import { authenticated } from '../store/auth';
     import { link, location, push } from "svelte-spa-router";
     
+    
     const document = {};
     const resumeCheckBoxes = ["☐", "☐", "☐", "☐", "☐", "☐"];
     const notificationCheckBoxes = ["☐", "☐", "☐", "☐", "☐", "☐", "☐", "☐", "☐"];
@@ -59,13 +60,26 @@
 
     $: back = async () => {
         await push("/user/" + $location.split("/")[2]);
+
     }
+
+    $: print = () => {
+        window.print();
+        return false;
+    }
+
+    let time:any = new Date().toLocaleString();
+
 </script>
 
 <main>
     <button class="btn" on:click={back}>Back</button>
+    <button class="print" on:click={print}>print</button>
+    <div class="container">
+
+    
     <h2>Formulaire de réponse aux cyber-incidents</h2>
-	<p class="client">Communication privilégiée et confidentielle entre RAISEGUARD SOC et son Client ------------</p>
+	<p class="client">Communication privilégiée et confidentielle entre DEFENSY LAB SOC et son Client ------------</p>
 	<div style="margin: 1rem 5rem;">
 		<h3 class="content">INFORMATION SUR L'IDENTIFICATION DE L'INCIDENT</h3>
 		<div class="content">Date et heure de Notification: {document["date-of-notification"]}</div>
@@ -74,7 +88,7 @@
 		<div><span class="data data-right content">Tier: {document["tier"]}</span><span class="data data-left content">Lieu: {document["place"]}</span></div>
 		<div><span class="data data-right content">GSM/Contact: {document["contact"]}</span><span class="data data-left content">Système ou application: {document["type-of-software"]}</span></div>
 		<h3>RÉSUMÉ DE L'INCIDENT</h3>
-		<div class="content">
+		<div class="content type">
 			Type of Incident Detected:
 			<br>
 			<span class="check-box-3">{resumeCheckBoxes[0]} Denial of Service</span>
@@ -142,7 +156,7 @@
         </div>
 	</div>
 	<h2>Formulaire de réponse aux cyber-incidents</h2>
-	<p class="client">Communication privilégiée et confidentielle entre RAISEGUARD SOC et son Client ------------</p>
+	<p class="client">Communication privilégiée et confidentielle entre DEFENSY LAB SOC et son Client ------------</p>
 	<div style="margin: 1rem 5rem;">
 		<h3 class="content">EVALUATION</h3>
 		<div class="content description">
@@ -212,16 +226,27 @@
 	<p class="left">
 		Ce formulaire a été conçu comme un outil de travail pour les activités d'évaluation et d'amélioration ; il est destiné à un usage interne uniquement.
 		<br>
-		RAISEGUARD/Janvier 2022 – Rev-1.0.0
+		DEFENSY LAB/{time}– Rev-1.0.0
 	</p>
+</div>
 </main>
 
 <style>
+    .container {
+        margin: 50px auto;
+        border: 0;
+        
+    }
     .btn {
 	    margin-left: 4rem;
     	background-color: transparent;
 		color:#132a6a;
 		border-color: #ef5f55;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 50px;
+        right: 470px;
+        width: 80px;
 	}
 	
     .btn:hover{
@@ -240,14 +265,14 @@
 
 	h2 {
 		padding: 1.5rem;
-		background-color: #c88431;
+		background-color: #ef5f55;
 		color: white;
 		text-align: center;
 		font-size: 4rem;
 	}
 
 	h3 {
-		background-color: black;
+		background-color: #132a69;
 		color: white;
 		text-align: center;
 		font-size: 2rem;
@@ -301,4 +326,27 @@
 	.description {
 		height: auto;
 	}
+    .print {
+        margin-left: 4rem;
+    	background-color: transparent;
+		color:#132a6a;
+		border: 1px solid #ef5f55;
+        margin-bottom: 20px;
+        position: absolute;
+        top: 50px;
+        right: 370px;
+        width: 80px;
+        outline: 0;
+        border-radius: 5px;
+        padding: 6px;
+        cursor: alias;
+    }
+    .print:hover{
+        background-color: #ef5f55;
+        color:white;
+        border-color: #132a6a;
+    }
+    span {
+    font-size: 17px !important;
+}
 </style>

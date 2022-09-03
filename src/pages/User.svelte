@@ -20,12 +20,13 @@
     function increment(): number {
         return docNo++;
     }
+
 </script>
 
 <main>
     <AddCard/>
     {#each incidents as incident}
-        {#if (docNo / 5) === Math.floor(docNo / 5)}
+        {#if (docNo / 10) === Math.floor(docNo / 10)}
             <br>
         {/if}
         <Card docNo={increment()} {incident}/>
