@@ -11,7 +11,8 @@
     const followUpCheckBoxes = ["☐", "☐", "☐", "☐"];
 
     onMount(async () => {
-        const { data } = await axios.get("incident/" + $location.split("/")[4]);
+        const url = "incident/" + ($location.split("/")[1] === "admin" ? $location.split("/")[3] : $location.split("/")[4]);
+        const { data } = await axios.get(url);
         resumeCheckBoxes[data["document"]["detection-type"]] = "☑";
         notificationCheckBoxes[data["document"]["notifier"]] = "☑";
         followUpCheckBoxes[data["document"]["reviewer"]] = "☑";
@@ -59,8 +60,8 @@
     });
 
     $: back = async () => {
-        await push("/user/" + $location.split("/")[2]);
-
+        const url = $location.split("/")[1] === "admin" ? "/admin" : `/user/${$location.split("/")[2]}`;
+        await push(url);
     }
 
     $: print = () => {

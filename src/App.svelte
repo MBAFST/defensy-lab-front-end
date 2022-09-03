@@ -20,6 +20,7 @@
 		"/reset/:token": Reset,
 		"/user/:id": User,
 		"/user/:id/incident/:id2": Incident,
+		"/admin/incident/:id2": Incident,
 		"/user/:id/form": FormApp
 	};
 </script>

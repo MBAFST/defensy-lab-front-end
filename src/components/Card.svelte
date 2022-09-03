@@ -7,7 +7,8 @@
 
     $: viewRapport = async () => {
         const user = await (await axios.get("user")).data;
-        await push(`/user/${user["id"]}/incident/${incident["id"]}`);
+        const url = user["is-admin"] === "admin" ? `/admin/incident/${incident["id"]}` : `/user/${user["id"]}/incident/${incident["id"]}`;
+        await push(url);
     }
 </script>
 
