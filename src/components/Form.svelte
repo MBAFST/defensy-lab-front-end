@@ -115,7 +115,7 @@
 	}
 </script>
 
-<form class="form-container" on:submit={handleSubmission}>
+<div class="form-container" >
 	{#if active_step == 'Notification'}
 		<h1 class="tit">&nbsp; Notificateur de L incident</h1>
 		<div class="tog2">
@@ -212,10 +212,10 @@
 	{:else if active_step == 'Rapport'}
 		<div class="message">
 			<h2>Votre rapport est pret a envoyee</h2> 
-			<button class="submit" type="submit">Finish</button>
+			<button class="submit" type="submit" on:click={handleSubmission}>Finish</button>
 		</div>
 	{/if}
-</form>
+	</div>
 
 <style>
 	.form-container {
