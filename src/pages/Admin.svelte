@@ -8,7 +8,7 @@
     let docNo = 1;
 
     onMount(async () => {
-        const data  = await axios.get("admin");
+        const { data } = await axios.get("admin");
         const documents = data["documents"];
         for (let item of documents) {
             incidents = [...incidents, item];

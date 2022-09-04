@@ -1,32 +1,43 @@
 <script lang="ts">
 	import axios from "axios";
 	import { push } from "svelte-spa-router";
-	import { prevent_default } from "svelte/internal";
 
-	let username: String = "";
-	let firstName: String = "";
-	let lastName: String = "";
-	let email: String = "";
-	let password: String = "";
-	let passwordConfirm: String = "";
+	let username: string = "";
+	let firstName: string = "";
+	let lastName: string = "";
+	let email: string = "";
+	let password: string = "";
+	let passwordConfirm: string = "";
+	let contact: string = "";
+	let place: string = "";
 
 	async function handleSubmission() { 
-    hasBeenClicked = true; 
-    if (isValidUName && isValidFName&& isValidLName && isValidEmail && isValidPassword && isValidCPassword ) {
+    	hasBeenClicked = true; 
+		if (isValid()) {
 			await axios.post("register", {
-			"username": username,
-			"first-name": firstName,
-			"last-name": lastName,
-			"email": email,
-			"password": password,
-			"password-confirm": passwordConfirm
-		});
-		
-		await push("/login");
-		
-	};
+				"username": username,
+				"first-name": firstName,
+				"last-name": lastName,
+				"email": email,
+				"password": password,
+				"contact": contact,
+				"place": place
+			});
+			
+			await push("/login");			
+		};
 	};
 
+	const isValid = (): boolean => {
+		return isValidUName &&
+			   isValidFName &&
+			   isValidLName &&
+			   isValidEmail &&
+			   isValidContact &&
+			   isValidPlace &&
+			   isValidPassword &&
+			   isValidCPassword;
+	}
 
 	let hasBeenClicked = false;
 
@@ -39,8 +50,10 @@
   $: isValidUName = username.length > 0;
   $: isValidFName = firstName.length > 0;
   $: isValidLName = lastName.length > 0;
+  $: isValidContact = contact.length > 0;
+  $: isValidPlace = place.length > 0;
   $: isValidEmail = validateEmail(email);
-  $: isValidPassword = password.length > 8;
+  $: isValidPassword = password.length >= 8;
   $: isValidCPassword = passwordConfirm == password;
 
 </script>
@@ -54,7 +67,7 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Username</label>
 			{#if hasBeenClicked && !isValidUName} 
-			<p class="validation-error">Please enter a Valid username</p>
+				<p class="validation-error">Please enter a Valid username</p>
 			{/if}
 		</div>
 
@@ -63,7 +76,7 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>First Name</label>
 			{#if hasBeenClicked && !isValidFName} 
-			<p class="validation-error">Please enter a Valid Name</p>
+				<p class="validation-error">Please enter a Valid Name</p>
 			{/if}
 		</div>
 
@@ -72,7 +85,25 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Last Name</label>
 			{#if hasBeenClicked && !isValidLName} 
-			<p class="validation-error">Please enter a Valid Name</p>
+				<p class="validation-error">Please enter a Valid Name</p>
+			{/if}
+		</div>
+
+		<div class="form-floating ">
+			<input bind:value="{contact}" class="form-control" placeholder="Contact" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>Contact</label>
+			{#if hasBeenClicked && !isValidContact} 
+				<p class="validation-error">Please enter a Valid Contact</p>
+			{/if}
+		</div>
+
+		<div class="form-floating ">
+			<input bind:value="{place}" class="form-control" placeholder="Place" >
+			<!-- svelte-ignore a11y-label-has-associated-control -->
+			<label>Place</label>
+			{#if hasBeenClicked && !isValidPlace} 
+				<p class="validation-error">Please enter a Valid Place</p>
 			{/if}
 		</div>
 
@@ -81,7 +112,7 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Email address</label>
 			{#if hasBeenClicked && !isValidEmail} 
-			<p class="validation-error">Invalid email</p>
+				<p class="validation-error">Invalid email</p>
 			{/if}
 		</div>
 
@@ -90,7 +121,7 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password</label>
 			{#if hasBeenClicked && !isValidPassword} 
-			<p class="validation-error">Please enter a <strong>Strong</strong> password</p>
+				<p class="validation-error">Please enter a <strong>Strong</strong> password</p>
 			{/if}
 			
 		</div>
@@ -100,7 +131,7 @@
 			<!-- svelte-ignore a11y-label-has-associated-control -->
 			<label>Password Confirm</label>
 			{#if hasBeenClicked && !isValidCPassword} 
-			<p class="validation-error">Passwords does not match!</p>
+				<p class="validation-error">Passwords does not match!</p>
 			{/if}
 		</div>
 

@@ -6,6 +6,7 @@
     let message: String = "";
 
     $: submit = async () => {
+        
         const {status } = await axios.post("forgot", {email});
 
         if (status === 200) {

@@ -12,50 +12,51 @@
 
     onMount(async () => {
         const url = "incident/" + ($location.split("/")[1] === "admin" ? $location.split("/")[3] : $location.split("/")[4]);
+        
         const { data } = await axios.get(url);
-        resumeCheckBoxes[data["document"]["detection-type"]] = "☑";
-        notificationCheckBoxes[data["document"]["notifier"]] = "☑";
-        followUpCheckBoxes[data["document"]["reviewer"]] = "☑";
+        resumeCheckBoxes[data["detection-type"]] = "☑";
+        notificationCheckBoxes[data["notifier"]] = "☑";
+        followUpCheckBoxes[data["reviewer"]] = "☑";
         // action
-        document["identification-measures"] = data["document"]["identification-measures"];
-        document["restraint-measures"] = data["document"]["restraint-measures"]; 
-        document["evidence-collected"] = data["document"]["evidence-collected"];
-        document["eradication-measures"] = data["document"]["eradication-measures"]; 
-        document["recovery-measure"] = data["document"]["recovery-measure"];
-        document["other-mitigation-measures"] = data["document"]["other-mitigation-measures"]; 
+        document["identification-measures"] = data["identification-measures"];
+        document["restraint-measures"] = data["restraint-measures"]; 
+        document["evidence-collected"] = data["evidence-collected"];
+        document["eradication-measures"] = data["eradication-measures"]; 
+        document["recovery-measure"] = data["recovery-measure"];
+        document["other-mitigation-measures"] = data["other-mitigation-measures"]; 
         // attachments
-        document["image-1"] = data["document"]["image-1"];
-        document["image-2"] = data["document"]["image-2"];
-        document["image-3"] = data["document"]["image-3"];
-        document["image-4"] = data["document"]["image-4"];
-        document["image-5"] = data["document"]["image-5"];
+        document["image-1"] = data["image-1"];
+        document["image-2"] = data["image-2"];
+        document["image-3"] = data["image-3"];
+        document["image-4"] = data["image-4"];
+        document["image-5"] = data["image-5"];
         // evaluation
-        document["members-reaction"] = data["document"]["members-reaction"];
-        document["documenting-procedures"] = data["document"]["documenting-procedures"];
-        document["needed-information"] = data["document"]["needed-information"];
-        document["actions-could-prevented-recovery"] = data["document"]["actions-could-prevented-recovery"];
-        document["members-must-do"] = data["document"]["members-must-do"];
-        document["correct-actions"] = data["document"]["correct-actions"];
-        document["additional-resources-needed"] = data["document"]["additional-resources-needed"];
-        document["other-recommandations"] = data["document"]["other-recommandations"];
+        document["members-reaction"] = data["members-reaction"];
+        document["documenting-procedures"] = data["documenting-procedures"];
+        document["needed-information"] = data["needed-information"];
+        document["actions-could-prevented-recovery"] = data["actions-could-prevented-recovery"];
+        document["members-must-do"] = data["members-must-do"];
+        document["correct-actions"] = data["correct-actions"];
+        document["additional-resources-needed"] = data["additional-resources-needed"];
+        document["other-recommandations"] = data["other-recommandations"];
         // follow-up
-        document["recommanded-actions"] = data["document"]["recommanded-actions"];
-        document["rapporter"] = data["document"]["rapporter"];
-        document["carred-out"] = data["document"]["carred-out"];
+        document["recommanded-actions"] = data["recommanded-actions"];
+        document["rapporter"] = data["rapporter"];
+        document["carred-out"] = data["carred-out"];
         // information
-        document["first-name"] = data["document"]["first-name"];
-        document["last-name"] = data["document"]["last-name"];
-        document["contact"] = data["document"]["contact"];
-        document["place"] = data["document"]["place"];
-        document["date-of-notification"] = data["document"]["date-of-notification"];
-        document["tier"] = data["document"]["tier"];
-        document["date-of-detection"] = data["document"]["date-of-detection"];
-        document["type-of-software"] = data["document"]["type-of-software"];
+        document["first-name"] = data["first-name"];
+        document["last-name"] = data["last-name"];
+        document["contact"] = data["contact"];
+        document["place"] = data["place"];
+        document["date-of-notification"] = data["date-of-notification"];
+        document["tier"] = data["tier"];
+        document["date-of-detection"] = data["date-of-detection"];
+        document["type-of-software"] = data["type-of-software"];
         // notification
-        document["other"] = data["document"]["other"];
+        document["other"] = data["other"];
         // resume
-        document["description"] = data["document"]["description"];
-        document["members"] = data["document"]["members"];
+        document["description"] = data["description"];
+        document["members"] = data["members"];
         authenticated.set(true);
     });
 
@@ -124,6 +125,13 @@
             <span class="check-box-3">{notificationCheckBoxes[7]} Human Resources</span>
             <span class="check-box-3">{notificationCheckBoxes[8]} Other:</span>
 		</div>
+        {#if notificationCheckBoxes[8] === "☑"}
+            <div class="content description">
+                other:
+                <br>
+                {document["other"]}
+            </div>
+		{/if}
 		<h3 class="content">ACTIONS</h3>
 		<div class="content description">
             Mesures d'identification (Incident vérifié, analysé, options évaluées):
