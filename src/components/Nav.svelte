@@ -8,6 +8,7 @@
 	authenticated.subscribe(value => auth = value);
 
 	$: logout = async () => {
+        
 		await axios.post('logout', {}, { withCredentials: true });
 		axios.defaults.headers.common["Authorization"] = "";
 		authenticated.set(false);

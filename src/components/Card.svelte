@@ -6,6 +6,7 @@
     export let docNo: number;
 
     $: viewRapport = async () => {
+        
         const user = await (await axios.get("user")).data;
         const url = user["is-admin"] === "admin" ? `/admin/incident/${incident["id"]}` : `/user/${user["id"]}/incident/${incident["id"]}`;
         await push(url);
@@ -20,8 +21,7 @@
         </div>
         <div class="info">
             <p class="parent">{incident["first-name"]} {incident["last-name"]}</p>
-            <p>Username : {incident["username"]} </p>
-            <p>E-mail : {incident["email"]}</p>
+            <p>Username : {incident["username"]}</p>
             <a href="/login" use:link class="btn" on:click={viewRapport}>View Rapport</a>
         </div>    
     </div>

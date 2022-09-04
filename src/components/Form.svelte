@@ -1,4 +1,5 @@
 <script>
+    import { onMount } from "svelte";
 	import { createAction } from "../factory/action.factory";
 	import { createAttachments } from "../factory/attachments.factory";
 	import { createEvaluation } from "../factory/evaluation.factory";
@@ -47,8 +48,24 @@
 		{ id: 3, text: "Other:" }
 	];
 
+	const user = {
+		firstName: "",
+		lastName: "",
+		contact: "",
+		place: ""
+	};
+
+    onMount(async () => {
+        const { data } = await axios.get("user");
+		user.firstName = data["first-name"];
+		user.lastName = data["last-name"];
+		user.contact = data["contact"];
+		user.place = data["place"];
+    });
+
 	async function handleSubmission() {
 		const args = $location.split("/");
+        
 		const document = await axios.post(`user/${args[2]}/incident`, {
 			// action
 			"identification-measures": action.identificationmMeasures,
@@ -80,6 +97,8 @@
 			// information
 			"date-of-notification": (new Date()).toISOString().slice(0,10),
 			"tier": information.tier,
+			"contact": information.contact,
+			"place": information.place,
 			"date-of-detection": information.dateOfDetection,
 			"type-of-software": information.typeOfSoftware,
 			// notification
@@ -100,11 +119,15 @@
 	{#if active_step == 'Notification'}
 		<h1 class="tit">&nbsp; Notificateur de L incident</h1>
 		<div class="tog2">
+			<input type="number" required placeholder="{user.lastName}" name="nom" disabled>
+			<input type="text" required placeholder="{user.firstName}" name="prenom" disabled>
+		</div>
+		<div class="tog2">
 			<input type="number" required placeholder="Tier" name="tier" bind:value="{information.tier}">
-			<input type="text" required placeholder="Lieu" name="lieu" bind:value="{information.place}">
+			<input type="text" required placeholder="{user.place}" name="lieu" disabled>
 		</div>
 		<div class="tog3">
-			<input type="text" required placeholder="GSM/Contact" name="GSM" bind:value="{information.contact}">
+			<input type="text" required placeholder="{user.contact}" name="GSM" disabled>
 			<input type="text" required placeholder="Systeme ou Application" name="sys" bind:value="{information.typeOfSoftware}">
 		</div>
 		<input type="date" required name="date" bind:value="{information.dateOfDetection}">

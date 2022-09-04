@@ -1,12 +1,13 @@
 <script lang="ts">
     import { link, push } from "svelte-spa-router";
     import axios from "axios";
+
     $: addCard = async () => {
+        
         const user = await (await axios.get("user")).data;
         await push(`/form`);
         await push(`/user/${user["id"]}/form`);
     };
-
 </script>
 
 <div class="card" on:click|stopPropagation="{addCard}">
